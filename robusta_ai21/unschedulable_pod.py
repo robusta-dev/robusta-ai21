@@ -16,6 +16,15 @@ def _ts_date(ts):
 
 @action
 def unschedulable_pod(event: EventEvent, config: UnschedulablePodParams):
+    """
+    playbooks configuration example:
+    - triggers:
+      - on_event_all_changes: {}
+      actions:
+      - unschedulable_pod:
+          namespace: default
+          grace_minutes: 20
+    """
     event_obj = event.get_event()
     if event_obj is None:
         return
